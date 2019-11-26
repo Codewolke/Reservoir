@@ -1,0 +1,101 @@
+﻿<ArcGIS defaultAssembly="Reservoir.dll" defaultNamespace="Reservoir" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///D:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+  <AddInInfo id="{252a44f0-2e1b-45d1-819b-8bf5e18832ae}" version="1.0" desktopVersion="2.4.19948">
+    <Name>Reservoir</Name>
+    <Description>Reservoir description</Description>
+    <Image>Images\AddinDesktop32.png</Image>
+    <Author>grossg</Author>
+    <Company>-</Company>
+    <Date>6/2/2019 5:27:29 PM, 2019</Date>
+    <Subject>Framework</Subject>
+    <!-- Note subject can be one or more of these topics:
+                    Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
+  </AddInInfo>
+  <modules>
+    <insertModule id="Reservoir_Module" className="Module1" autoLoad="false" caption="Module1">
+      <!-- uncomment to have the control hosted on a separate tab-->
+      <tabs>
+        <tab id="Reservoir_Tab1" caption="Reservoir">
+          <group refID="Reservoir_Group0" />
+          <group refID="Reservoir_Group1" />
+          <group refID="Reservoir_Group2" />
+          <group refID="Reservoir_Group3" />
+        </tab>
+      </tabs>
+      <groups>
+        <group id="Reservoir_Group0" caption="1. Data Preparation" appearsOnAddInTab="false">
+          <button refID="Reservoir_Group0_Button1" size="large" />
+          <editBox refID="ContourInterval"  size="middle" />
+          <editBox refID="PointInterval"  size="middle" />
+          <button refID="Reservoir_Group1_Button_TIN" size="large" />
+        </group>
+        <group id="Reservoir_Group1" caption="2. Dam Candidates" appearsOnAddInTab="false">
+          <button refID="Reservoir_Group1_Button1" size="large" />
+          <button refID="Reservoir_Group1_Button3" size="large" /> 
+          <button refID="Reservoir_Group1_Button4" size="large" />
+          <button refID="Reservoir_Group1_Button5" size="large" />
+        </group>
+        <group id="Reservoir_Group2" caption="3. Visualize" appearsOnAddInTab="false">
+          <button refID="Reservoir_Group2_Button1" size="large" />
+          <button refID="Reservoir_Group2_Button2" size="large" />
+        </group>
+        <group id="Reservoir_Group3" caption="Parameter" appearsOnAddInTab="false">
+          <button refID="Reservoir_ReservoirOutputDockPane_ShowButton" size="large" />
+          <comboBox refID="Reservoir_DEMCombo" />
+          <checkBox refID="MultiThreading" />
+        </group>
+      </groups>
+      <controls>
+        <button id="Reservoir_Group0_Button1" caption="Prepare Contours" className="PrepareContoursButton" loadOnClick="true" smallImage="Images\GenericButtonRed16.png" largeImage="Images\GenericButtonRed32.png">
+          <tooltip heading="Tooltip Heading">Prepare contours and points along the contours<disabledText /></tooltip>
+        </button>
+        <button id="Reservoir_Group1_Button_TIN" caption="Create TIN" className="CreateTINButton" loadOnClick="true" smallImage="Images\GenericButtonRed16.png" largeImage="Images\GenericButtonRed32.png">
+          <tooltip heading="Tooltip Heading">
+            Create TIN from DEM Raster<disabledText />
+          </tooltip>
+        </button>
+        <button id="Reservoir_Group1_Button1" caption="1. Detect Candidate Dams" className="DetectCandiateDamsButton" loadOnClick="true" smallImage="Images\Reservoir16.png" largeImage="Images\Reservoir32.png">
+          <tooltip heading="Tooltip Heading">Detect candidate dams<disabledText /></tooltip>
+        </button>
+        <button id="Reservoir_Group1_Button3" caption="2. Dam Volume" className="DamVolumeButton" loadOnClick="true" smallImage="Images\Reservoir16.png" largeImage="Images\Reservoir32.png">
+          <tooltip heading="Tooltip Heading">Select the best candidates and calculate the simplified dam volume<disabledText /></tooltip>
+        </button>
+        <button id="Reservoir_Group1_Button4" caption="3. Reservoir Polygons" className="CreateReservoirPolygonsButton" loadOnClick="true" smallImage="Images\Reservoir16.png" largeImage="Images\Reservoir32.png">
+          <tooltip heading="Tooltip Heading">Create Reservoir Polygons<disabledText /></tooltip>
+        </button>
+        <button id="Reservoir_Group1_Button5" caption="4. Reservoir Volume" className="ReservoirVolumeAndRankingButton" loadOnClick="true" smallImage="Images\Reservoir16.png" largeImage="Images\Reservoir32.png">
+          <tooltip heading="Tooltip Heading">Analyze the reservoir volume and create a ranking by ReservoirVolume/DamVolume<disabledText /></tooltip>
+        </button>
+        <button id="Reservoir_Group2_Button1" caption="Find reservoir pairs" className="PairReservoirsButton" loadOnClick="true" smallImage="Images\GenericButtonBlue16.png" largeImage="Images\GenericButtonBlue32.png">
+          <tooltip heading="Tooltip Heading">Find suitable reservoir pairs<disabledText /></tooltip>
+        </button>
+        <button id="Reservoir_Group2_Button2" caption="Visualize Reservoirs" className="VisualizeDamButton" loadOnClick="true" smallImage="Images\GenericButtonRed16.png" largeImage="Images\GenericButtonRed32.png">
+          <tooltip heading="Tooltip Heading">Visualize the selected dam<disabledText /></tooltip>
+        </button>
+        <checkBox id="MultiThreading" caption="MultiThreading" className="MultiThreadingBox" disableIfBusy="false" isChecked="true" smallImage="Images\GenericButtonBlue16.png" >
+          <tooltip heading="">
+            Use all CPU Cores?<disabledText></disabledText>
+          </tooltip>
+        </checkBox>
+        <editBox id="ContourInterval" keytip="ContourInterval"  caption="Contour Interval:" extendedCaption="in meter" className="ContourIntervalBox" disableIfBusy="false" smallImage="Images\GenericButtonBlue16.png" dataType="int64" sizeString="123456">
+          <tooltip heading="">
+            Interval of the Contour<disabledText></disabledText></tooltip>
+        </editBox>
+        <editBox id="PointInterval" caption="Point Interval: " className="PointIntervalBox" disableIfBusy="false" smallImage="Images\GenericButtonBlue16.png" dataType="int64" sizeString="123456">
+          <tooltip heading="">
+            Point Interval along the Contours<disabledText></disabledText></tooltip>
+        </editBox>
+        <comboBox id="Reservoir_DEMCombo" caption="DEM" className="DEMCombo" itemWidth="140" extendedCaption="DEM" isEditable="false" isReadOnly="true" resizable="true">
+          <tooltip heading="DEM">Select a voidfilled DEM Raster for the analysis<disabledText /></tooltip>
+        </comboBox>
+        <button id="Reservoir_ReservoirOutputDockPane_ShowButton" caption="Show Log" className="ReservoirOutputDockPane_ShowButton" loadOnClick="true" smallImage="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/GenericButtonPurple16.png" largeImage="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/GenericButtonPurple32.png">
+          <tooltip heading="Show Log Dockpane">Show Log Dockpane<disabledText /></tooltip>
+        </button>
+      </controls>
+      <dockPanes>
+        <dockPane id="Reservoir_ReservoirOutputDockPane" caption="ReservoirOutputDockPane" className="ReservoirOutputDockPaneViewModel" dock="group" dockWith="esri_core_contentsDockPane">
+          <content className="ReservoirOutputDockPaneView" />
+        </dockPane>
+      </dockPanes>
+    </insertModule>
+  </modules>
+</ArcGIS>
